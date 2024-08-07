@@ -1,66 +1,234 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+ Tasky
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Tasky](https://img.shields.io/badge/Task%20Manager-Laravel%20%26%20React-blueviolet?style=flat-square)
 
-## About Laravel
+A full-stack Task Management Application built with Laravel for the backend and React for the frontend. This application allows users to manage tasks efficiently with features such as user authentication, project organization, task categorization, and more.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Table of Contents
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Configuration](#configuration)
+  - [Database Migration](#database-migration)
+  - [Running the Application](#running-the-application)
+- [Project Structure](#project-structure)
+- [API Endpoints](#api-endpoints)
+- [Usage](#usage)
+  - [Authentication](#authentication)
+  - [Task Management](#task-management)
+  - [Projects](#projects)
+  - [Categories & Tags](#categories--tags)
+  - [Comments & Attachments](#comments--attachments)
+- [Testing](#testing)
+- [Contributing](#contributing)
+- [License](#license)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Features
 
-## Learning Laravel
+- **User Authentication**: Secure registration, login, and password management with Laravel Breeze.
+- **Task Management**: Create, update, delete, and view tasks with ease.
+- **Project Management**: Organize tasks within projects for better management.
+- **Task Categorization**: Classify tasks using categories and tags.
+- **Comments & Attachments**: Add comments and upload files related to tasks.
+- **Responsive Design**: Mobile-friendly interface for a seamless user experience.
+- **Role-Based Access Control**: Optional roles and permissions for different user levels.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Getting Started
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+### Prerequisites
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Before you begin, ensure you have met the following requirements:
 
-## Laravel Sponsors
+- **PHP 8.1** or higher
+- **Composer**
+- **Node.js** and **NPM**
+- **MySQL** or another supported database
+- **Laravel 10** or higher
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### Installation
 
-### Premium Partners
+Follow these steps to set up the application locally:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+1. **Clone the repository**
 
-## Contributing
+   ```bash
+   git clone https://github.com/yourusername/task-management-app.git
+   cd task-management-app
+Install backend dependencies
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+bash
+Copy code
+composer install
+Install frontend dependencies
 
-## Code of Conduct
+bash
+Copy code
+npm install
+Configuration
+Environment Variables
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Copy the example environment file and configure your local settings:
 
-## Security Vulnerabilities
+bash
+Copy code
+cp .env.example .env
+Edit the .env file to match your database and other local configurations:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+plaintext
+Copy code
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=task_manager
+DB_USERNAME=root
+DB_PASSWORD=your_password
 
-## License
+# For Email settings
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.mailtrap.io
+MAIL_PORT=2525
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+Generate Application Key
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+bash
+Copy code
+php artisan key:generate
+Database Migration
+Run the migrations to create the necessary tables in your database:
+
+bash
+Copy code
+php artisan migrate
+(Optional) Seed the database with initial data:
+
+bash
+Copy code
+php artisan db:seed
+Running the Application
+Start the development server and build assets:
+
+Run Laravel server
+
+bash
+Copy code
+php artisan serve
+Compile React frontend
+
+bash
+Copy code
+npm run dev
+The application should now be accessible at http://localhost:8000.
+
+Project Structure
+Here's a brief overview of the project's file structure:
+
+plaintext
+Copy code
+task-management-app/
+├── app/
+│   ├── Http/
+│   ├── Models/
+│   └── ...
+├── database/
+│   ├── migrations/
+│   ├── seeders/
+│   └── ...
+├── resources/
+│   ├── js/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   └── ...
+│   └── views/
+├── routes/
+│   ├── api.php
+│   └── web.php
+├── public/
+├── .env
+├── package.json
+├── composer.json
+└── ...
+API Endpoints
+Here are the available API endpoints for the application:
+
+Authentication
+Method	Endpoint	Description
+POST	/register	Register a new user
+POST	/login	Login a user
+POST	/logout	Logout a user
+Tasks
+Method	Endpoint	Description
+GET	/api/tasks	Retrieve all tasks
+POST	/api/tasks	Create a new task
+GET	/api/tasks/{id}	Retrieve a specific task
+PUT	/api/tasks/{id}	Update a specific task
+DELETE	/api/tasks/{id}	Delete a specific task
+Projects
+Method	Endpoint	Description
+GET	/api/projects	Retrieve all projects
+POST	/api/projects	Create a new project
+GET	/api/projects/{id}	Retrieve a specific project
+PUT	/api/projects/{id}	Update a specific project
+DELETE	/api/projects/{id}	Delete a specific project
+Categories & Tags
+Method	Endpoint	Description
+GET	/api/categories	Retrieve all task categories
+POST	/api/categories	Create a new task category
+GET	/api/categories/{id}	Retrieve a specific task category
+PUT	/api/categories/{id}	Update a specific task category
+DELETE	/api/categories/{id}	Delete a specific task category
+Method	Endpoint	Description
+GET	/api/tags	Retrieve all task tags
+POST	/api/tags	Create a new task tag
+GET	/api/tags/{id}	Retrieve a specific task tag
+PUT	/api/tags/{id}	Update a specific task tag
+DELETE	/api/tags/{id}	Delete a specific task tag
+Comments & Attachments
+Method	Endpoint	Description
+GET	/api/tasks/{id}/comments	Retrieve all comments for a task
+POST	/api/tasks/{id}/comments	Add a comment to a task
+DELETE	/api/comments/{id}	Delete a specific comment
+Method	Endpoint	Description
+POST	/api/tasks/{id}/attachments	Upload an attachment for a task
+GET	/api/attachments/{id}	Download a specific attachment
+DELETE	/api/attachments/{id}	Delete a specific attachment
+Usage
+Authentication
+Register: Create a new account with a name, email, and password.
+Login: Authenticate with your email and password to access the application.
+Logout: Securely end your session.
+Task Management
+Create Task: Add a new task with a title, description, due date, and priority level.
+Edit Task: Update existing task details as needed.
+Delete Task: Remove tasks that are no longer needed.
+View Tasks: See a list of all tasks with sorting and filtering options.
+Projects
+Create Project: Initiate a new project to group related tasks.
+Edit Project: Update project information such as name and description.
+Delete Project: Remove projects and associated tasks if necessary.
+View Projects: See a list of all projects with task associations.
+Categories & Tags
+Add Category: Organize tasks by creating categories with names and colors.
+Edit Category: Update category details.
+Delete Category: Remove categories and associated task links.
+Add Tag: Label tasks with tags for better organization.
+Edit Tag: Update tag details.
+Delete Tag: Remove tags and associated task links.
+Comments & Attachments
+Add Comment: Provide additional details or updates on tasks.
+Delete Comment: Remove unnecessary or outdated comments.
+Upload Attachment: Attach files related to tasks for reference.
+Download Attachment: Access attached files directly from the task interface.
+Delete Attachment: Remove attachments when no longer needed.
+Testing
+Run the following command to execute the application's test suite:
+
+bash
+Copy code
+php artisan test
+This will run unit and feature tests to ensure the application behaves as expected.
+
+
