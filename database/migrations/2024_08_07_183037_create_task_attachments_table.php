@@ -18,6 +18,9 @@ return new class extends Migration
             $table->string('file_name');
             $table->string('file_type');
             $table->integer('file_size');
+            $table->unsignedBigInteger('task_id');
+            $table->unsignedBigInteger('user_id');
+
             $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnDelete();
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
         });
