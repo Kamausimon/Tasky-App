@@ -14,6 +14,15 @@ return new class extends Migration
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('title');
+            $table->text('description');
+            $table->boolean('completed')->default(false);
+            $table->timestamp('completed_at')->nullable();
+            $table->timestamp('due_at')->nullable();
+            $table->enum('priority', ['low', 'medium', 'high'])->default('medium');
+
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('project_id')->nullable()->constrained()->cascadeOnDelete();
         });
     }
 
