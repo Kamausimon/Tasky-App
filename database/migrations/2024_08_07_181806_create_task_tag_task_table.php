@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('task_tag_task_pivot', function (Blueprint $table) {
+        Schema::create('task_tag_task', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->unsignedBigInteger('task_id');
-            $table->unsignedBigInteger('tag_id');
+
 
             $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnDelete();
             $table->foreign('tag_id')->references('id')->on('task_tags')->cascadeOnDelete();
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('task_tag_task_pivot');
+        Schema::dropIfExists('task_tag_task');
     }
 };
