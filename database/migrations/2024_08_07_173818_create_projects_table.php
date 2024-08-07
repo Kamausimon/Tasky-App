@@ -18,6 +18,9 @@ return new class extends Migration
             $table->text('description');
             $table->date('start_date');
             $table->date('end_date');
+
+            $table->unsignedBigInteger('user_id');
+
             $table->foreignId('user_id')->constrained('users');
         });
     }
