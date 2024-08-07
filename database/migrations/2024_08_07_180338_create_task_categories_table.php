@@ -16,6 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->string('color')->nullable();
+            $table->unsignedBigInteger('user_id');
+
             $table->foreignId('user_id')->constrained('users');
         });
     }
