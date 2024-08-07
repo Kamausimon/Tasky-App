@@ -14,6 +14,9 @@ return new class extends Migration
         Schema::create('task_tag_task_pivot', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->unsignedBigInteger('task_id');
+            $table->unsignedBigInteger('tag_id');
+
             $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnDelete();
             $table->foreign('tag_id')->references('id')->on('task_tags')->cascadeOnDelete();
         });
