@@ -21,9 +21,9 @@ return new class extends Migration
             $table->timestamp('due_at')->nullable();
             $table->enum('priority', ['low', 'medium', 'high'])->default('medium');
 
-            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('project_id')->nullable()->constrained()->cascadeOnDelete();
+            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete()->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
+            $table->foreign('project_id')->references('id')->on('projects')->cascadeOnDelete()->nullable();
         });
     }
 
