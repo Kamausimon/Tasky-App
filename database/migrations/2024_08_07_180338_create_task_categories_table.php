@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('color')->default('#000000');
+            $table->string('color')->nullable();
             $table->foreignId('user_id')->constrained('users');
         });
     }
