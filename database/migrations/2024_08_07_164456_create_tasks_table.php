@@ -21,9 +21,13 @@ return new class extends Migration
             $table->timestamp('due_at')->nullable();
             $table->enum('priority', ['low', 'medium', 'high'])->default('medium');
 
-            $table->foreign('category_id')->references('id')->on('categories')->cascadeOnDelete()->nullable();
+            $table->unsignedBigInteger('task_categories_id')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('project_id')->nullable();
+
+            $table->foreign('category_id')->references('id')->on('task_categories')->cascadeOnDelete();
             $table->foreign('user_id')->references('id')->on('users')->cascadeOnDelete();
-            $table->foreign('project_id')->references('id')->on('projects')->cascadeOnDelete()->nullable();
+            $table->foreign('project_id')->references('id')->on('projects')->cascadeOnDelete();
         });
     }
 
