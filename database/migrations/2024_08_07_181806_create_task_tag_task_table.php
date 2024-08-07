@@ -16,8 +16,8 @@ return new class extends Migration
             $table->timestamps();
 
 
-            $table->foreign('task_id')->references('id')->on('tasks')->cascadeOnDelete();
-            $table->foreign('tag_id')->references('id')->on('task_tags')->cascadeOnDelete();
+            $table->foreignId('task_id')->constrained('tasks')->cascadeOnDelete();
+            $table->foreignId('tag_id')->constrained('task_tags')->cascadeOnDelete();
         });
     }
 
