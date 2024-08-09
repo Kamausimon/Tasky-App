@@ -51,27 +51,27 @@ class User extends Authenticatable
     //tasks for the user 
     public function tasks()
     {
-        return $this->hasMany(Tasks::class);
+        return $this->hasMany(Task::class);
     }
 
     public function projects()
     {
-        return $this->hasMany(Projects::class);
+        return $this->hasMany(Project::class);
     }
 
     public function comments()
     {
-        return $this->hasMany(Comments::class);
+        return $this->hasMany(Comment::class);
     }
 
     public function attachments()
     {
-        return $this->hasMany(Attachments::class);
+        return $this->hasMany(Attachment::class);
     }
 
     public function notifications()
     {
-        return $this->hasMany(Notifications::class);
+        return $this->hasMany(Notification::class);
     }
 
     public function roles()
