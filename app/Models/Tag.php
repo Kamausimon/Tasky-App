@@ -15,4 +15,9 @@ class Tag extends Model
         'name',
         'color'
     ];
+
+    public function tasks()
+    {
+        return $this->hasMany(Task::class);
+    }
 }
