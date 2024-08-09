@@ -41,4 +41,19 @@ class Task extends Model
     {
         return $this->belongsTo(TaskCategory::class);
     }
+
+    public function tag()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
+
+    public function comment()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function attachment()
+    {
+        return $this->hasMany(Attachment::class);
+    }
 }
