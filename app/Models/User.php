@@ -71,6 +71,11 @@ class User extends Authenticatable
 
     public function notifications()
     {
-        return $this->hasMany(Notification::class);
+        return $this->hasMany(Notifications::class);
+    }
+
+    public function roles()
+    {
+        return $this->hasOne(Role::class);
     }
 }
