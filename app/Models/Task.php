@@ -18,12 +18,14 @@ class Task extends Model
         'project_id',
         'category_id',
         'completed',
+        'completed_at',
         'due_at',
         'priority'
     ];
 
     protected $cast = [
         'completed' => 'boolean',
+        'completed_at' => 'datetime',
         'due_at' => 'datetime'
     ];
 
